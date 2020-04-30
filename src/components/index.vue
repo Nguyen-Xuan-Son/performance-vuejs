@@ -1,12 +1,15 @@
 <template>
     <div>
-        
+        <Categories />
     </div>
 </template>
 
 <script>
+import Categories from './category/categories.vue';
+
 export default {
-    name: 'Root'
+    name: 'Root',
+    components: {Categories}
 }
 </script>
 
