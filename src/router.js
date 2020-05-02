@@ -1,4 +1,4 @@
-import CategoryComponent from './components/category/categories.vue';
+import CategoryContainerComponent from './components/category';
 import ProductComponent from './components/product/products.vue';
 import HomeComponent from './components/home.vue';
 
@@ -14,14 +14,14 @@ const routes = [
     {
         path: '/category',
         name: 'category',
-        component: CategoryComponent,
-        children: [...CategoryRoute]
+        component: CategoryContainerComponent,
+        children: CategoryRoute
     },
     {
         path: '/product',
         name: 'product',
         component: ProductComponent,
-        children: [...ProductRoute]
+        children: ProductRoute
     }
 ];
 

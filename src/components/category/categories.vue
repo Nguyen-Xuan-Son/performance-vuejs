@@ -1,19 +1,16 @@
 <template>
     <div class="row">
-        <div class="col-md-12 mb-2">
-            <h3>Categories</h3>
-        </div>
         <div class="col-md-12 text-right">
             <button class="btn btn-sm btn-success m-2"
                     @click="navigateCreateCategory()">Create</button>
         </div>
-        <div class="col-md-12">
+        <div class="col-md-12 border p-3 rounded">
             <table class="table table-hover">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Name</th>
-                        <th scope="col">Number product</th>
+                        <th scope="col">Id category</th>
                         <th scope="col">Actions</th>
                     </tr>
                 </thead>
@@ -56,7 +53,7 @@ export default {
     name: 'Categories',
     methods: {
         navigateCreateCategory() {
-            this.$router.push('/new');
+            this.$router.push('/category/new');
         }
     }
 }

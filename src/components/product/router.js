@@ -3,12 +3,12 @@ import ProductUpdateAndViewComponent from './product-update-and-detail.vue';
 
 const routes = [
     {
-        path: '/new',
+        path: 'new',
         name: 'createProduct',
         component: ProductCreateComponent
     },
     {
-        path: '/:id',
+        path: ':id',
         name: 'updateAndViewProduct',
         component: ProductUpdateAndViewComponent
     }

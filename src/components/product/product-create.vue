@@ -1,6 +1,6 @@
 <template>
     <div>
-        ProductCreate
+        <h3>Create product</h3>
     </div>
 </template>
 
