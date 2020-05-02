@@ -1,5 +1,5 @@
-import CategoryCreateComponent from './category-create.vue';
-import CategoryUpdateAndViewComponent from './category-update-and-detail.vue';
+import CategoryCreateAndUpdateComponent from './category-create-and-update';
+import ViewProductsComponent from './view-products-detail.vue';
 import CategoriesComponent from './categories.vue';
 
 const routes = [
@@ -9,14 +9,14 @@ const routes = [
         component: CategoriesComponent
     },
     {
-        path: 'new',
-        name: 'createCategory',
-        component: CategoryCreateComponent
+        path: ':id',
+        name: 'createAndUpdateCategory',
+        component: CategoryCreateAndUpdateComponent
     },
     {
-        path: ':id',
-        name: 'updateAndViewCategory',
-        component: CategoryUpdateAndViewComponent
+        path: ':id/viewProducts',
+        name: 'viewProducts',
+        component: ViewProductsComponent
     }
 ];
 

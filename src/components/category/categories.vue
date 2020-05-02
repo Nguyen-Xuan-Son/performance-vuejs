@@ -15,31 +15,26 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
+                    <tr v-for="(category, index) in categories"
+                        :key="category.id">
+                        <th scope="row">{{index + 1}}</th>
+                        <td>{{category.name}}</td>
+                        <td>{{category.id}}</td>
                         <td>
-                            <button class="btn btn-sm btn-warning">Edit</button>
-                            <button class="btn btn-sm btn-info ml-1">View</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>
-                            <button class="btn btn-sm btn-warning">Edit</button>
-                            <button class="btn btn-sm btn-info ml-1">View</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>Larry</td>
-                        <td>the Bird</td>
-                        <td>
-                            <button class="btn btn-sm btn-warning">Edit</button>
-                            <button class="btn btn-sm btn-info ml-1">View</button>
+                            <button class="btn btn-sm btn-warning"
+                                @click="navigateUpdateCategory(category.id)"
+                            >
+                                Edit
+                            </button>
+                            <button class="btn btn-sm btn-info ml-1"
+                            >
+                                View product
+                            </button>
+                            <button class="btn btn-sm btn-danger ml-1"
+                                @click="deleteCategoryById(category.id)"
+                            >
+                                Delete
+                            </button>
                         </td>
                     </tr>
                 </tbody>
@@ -49,12 +44,38 @@
 </template>
 
 <script>
+import {
+    initCategories,
+    getCategories,
+    deleteCategory
+} from './../../service';
+
 export default {
     name: 'Categories',
     methods: {
         navigateCreateCategory() {
             this.$router.push('/category/new');
+        },
+        navigateUpdateCategory(id) {
+            this.$router.push('/category/' + id);
+        },
+        deleteCategoryById(id) {
+            deleteCategory(id);
+            this.categories = getCategories();
         }
+    },
+    data() {
+        return {
+            categories: []
+        }
+    },
+    mounted() {
+        const categories = getCategories();
+        if (categories.length >= 3) {
+            this.categories = getCategories();
+            return;
+        }
+        this.categories = initCategories();
     }
 }
 </script>

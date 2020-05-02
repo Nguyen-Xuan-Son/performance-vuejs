@@ -1,3 +1,7 @@
+const generateId = () => {
+    return Math.random().toString(36).substr(2, 11);
+};
+
 const getCategories = () => {
     return JSON.parse(localStorage.getItem("categories"));
 };
@@ -12,34 +16,42 @@ const createCategory = category => {
     saveCategories(categories);
 };
 
+const deleteCategory = id => {
+    const categories = getCategories();
+    const indexCategory = categories.findIndex(category => {
+        return category.id === id;
+    });
+    categories.splice(indexCategory, 1);
+    console.log("categories", categories);
+    saveCategories(categories);
+};
+
 const initCategories = () => {
     const categories = [
         {
-            id: 1,
+            id: generateId(),
             name: "Mobile",
-            idCategory: "12mcqls1",
             product: [
                 {
-                    id: 1,
+                    id: generateId(),
                     name: "Iphone 1"
                 },
                 {
-                    id: 2,
+                    id: generateId(),
                     name: "Iphone 3"
                 }
             ]
         },
         {
-            id: 2,
+            id: generateId(),
             name: "Tablet",
-            idCategory: "87cskasc",
             product: [
                 {
-                    id: 1,
+                    id: generateId(),
                     name: "Tablet 1"
                 },
                 {
-                    id: 2,
+                    id: generateId(),
                     name: "Tablet 3"
                 }
             ]
@@ -47,10 +59,13 @@ const initCategories = () => {
     ];
     localStorage.clear();
     saveCategories(categories);
+    return categories;
 };
 
 export {
     initCategories,
     createCategory,
-    getCategories
+    getCategories,
+    generateId,
+    deleteCategory
 }

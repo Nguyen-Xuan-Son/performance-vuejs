@@ -5,6 +5,7 @@
             <div class="form-group">
                 <label for="exampleInputEmail1">Name</label>
                 <input type="text"
+                        v-model="name"
                         class="form-control"
                         id="exampleInputEmail1"
                         placeholder="Enter name ...">
@@ -12,6 +13,7 @@
             <div class="form-group">
                 <label for="number-product-feild">Id category</label>
                 <input type="text"
+                        v-model="idCategory"
                         class="form-control"
                         id="number-product-feild"
                         placeholder="Enter number product ...">
@@ -33,14 +35,31 @@
 </template>
 
 <script>
+import {
+    createCategory,
+    generateId
+} from './../../service';
+
 export default {
     name: 'CategoryCreate',
+    data() {
+        return {
+            name: '',
+            idCategory: ''
+        }
+    },
     methods: {
         backTolist() {
             this.$router.push('/category');
         },
         createCategory() {
-            console.log("createCategory");
+            const data = {
+                id: generateId(),
+                name: this.name,
+                idCategory: this.idCategory
+            };
+            createCategory(data);
+            this.$router.push("/category");
         }
     }
 }
