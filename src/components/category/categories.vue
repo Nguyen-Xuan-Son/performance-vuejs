@@ -4,7 +4,8 @@
             <h3>Categories</h3>
         </div>
         <div class="col-md-12 text-right">
-            <button class="btn btn-sm btn-success m-2">Create</button>
+            <button class="btn btn-sm btn-success m-2"
+                    @click="navigateCreateCategory()">Create</button>
         </div>
         <div class="col-md-12">
             <table class="table table-hover">
@@ -52,11 +53,15 @@
 
 <script>
 export default {
-    name: 'Categories'
+    name: 'Categories',
+    methods: {
+        navigateCreateCategory() {
+            this.$router.push('/new');
+        }
+    }
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 
 </style>

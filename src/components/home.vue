@@ -1,12 +1,12 @@
 <template>
     <div>
-        ProductUpdateAndDetail
+        Home component
     </div>
 </template>
 
 <script>
 export default {
-    name: 'ProductUpdateAndDetail'
+    name: 'Home'
 }
 </script>
 
