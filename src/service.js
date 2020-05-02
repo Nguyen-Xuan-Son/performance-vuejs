@@ -42,7 +42,7 @@ const initCategories = () => {
             id: generateId(),
             name: "Mobile",
             depcription: "Depcription 1",
-            product: [
+            products: [
                 {
                     id: generateId(),
                     name: "Iphone 1"
@@ -57,7 +57,7 @@ const initCategories = () => {
             id: generateId(),
             name: "Tablet",
             depcription: "Depcription 2",
-            product: [
+            products: [
                 {
                     id: generateId(),
                     name: "Tablet 1"

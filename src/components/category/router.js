@@ -14,7 +14,7 @@ const routes = [
         component: CategoryCreateAndUpdateComponent
     },
     {
-        path: ':id/viewProducts',
+        path: ':id/view-products',
         name: 'viewProducts',
         component: ViewProductsComponent
     }

@@ -27,6 +27,7 @@
                                 Edit
                             </button>
                             <button class="btn btn-sm btn-info ml-1"
+                                @click="navigateViewCategoryDetail(category.id)"
                             >
                                 View product
                             </button>
@@ -62,6 +63,9 @@ export default {
         deleteCategoryById(id) {
             deleteCategory(id);
             this.categories = getCategories();
+        },
+        navigateViewCategoryDetail(id) {
+            this.$router.push({ path: `/category/${id}/view-products`});
         }
     },
     data() {
