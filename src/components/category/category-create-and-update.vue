@@ -1,6 +1,9 @@
 <template>
     <div class="row text-left">
-        <h3 class="col-md-12">Create Category</h3>
+        <h3 class="col-md-12"
+            v-if="isCreateMode">Create Category</h3>
+        <h3 class="col-md-12"
+            v-else>Update Category</h3>
         <div class="col-md-12 border p-3 rounded">
             <div class="form-group">
                 <label for="exampleInputEmail1">Name</label>
@@ -11,18 +14,25 @@
                         placeholder="Enter name ...">
             </div>
             <div class="form-group">
-                <label for="number-product-feild">Id category</label>
+                <label for="depcription-feild">Depcription</label>
                 <input type="text"
-                        v-model="idCategory"
+                        v-model="depcription"
                         class="form-control"
-                        id="number-product-feild"
-                        placeholder="Enter number product ...">
+                        id="depcription-feild"
+                        placeholder="Enter depcription ...">
             </div>
             <div class="form-group">
                 <button type="button"
+                    v-if="isCreateMode"
                     @click="createCategory()"
                     class="btn btn-success">
                     Create
+                </button>
+                <button type="button"
+                    v-else
+                    @click="updateCategory()"
+                    class="btn btn-warning">
+                    Update
                 </button>
                 <button type="button"
                     @click="backTolist()"
@@ -37,7 +47,9 @@
 <script>
 import {
     createCategory,
-    generateId
+    generateId,
+    getCategoryById,
+    updateCategoryById
 } from './../../service';
 
 export default {
@@ -45,7 +57,9 @@ export default {
     data() {
         return {
             name: '',
-            idCategory: ''
+            depcription: '',
+            isCreateMode: true,
+            categoryId: ''
         }
     },
     methods: {
@@ -56,11 +70,35 @@ export default {
             const data = {
                 id: generateId(),
                 name: this.name,
-                idCategory: this.idCategory
+                depcription: this.depcription
             };
             createCategory(data);
             this.$router.push("/category");
+        },
+        getCategory() {
+            const category = getCategoryById(this.categoryId);
+            this.name = category.name;
+            this.depcription = category.depcription;
+        },
+        updateCategory() {
+            const data = {
+                id: this.categoryId,
+                name: this.name,
+                depcription: this.depcription
+            }
+            updateCategoryById(data);
+            this.$router.push("/category");
         }
+    },
+    mounted() {
+        const id = this.$route.params.id;
+        if (id === 'new') {
+            this.isCreateMode = true;
+            return;
+        }
+        this.categoryId = this.$route.params.id;
+        this.isCreateMode = false;
+        this.getCategory();
     }
 }
 </script>

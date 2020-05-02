@@ -16,13 +16,23 @@ const createCategory = category => {
     saveCategories(categories);
 };
 
+const getCategoryById = categoryId => {
+    const categories = getCategories();
+    const category = categories.filter(category => category.id === categoryId)[0];
+    return category;
+};
+
+const updateCategoryById = categoryUpdate => {
+    const categories = getCategories();
+    const indexCategory = categories.findIndex(category => category.id === categoryUpdate.id);
+    categories.splice(indexCategory, 1, categoryUpdate);
+    saveCategories(categories);
+};
+
 const deleteCategory = id => {
     const categories = getCategories();
-    const indexCategory = categories.findIndex(category => {
-        return category.id === id;
-    });
+    const indexCategory = categories.findIndex(category => category.id === id);
     categories.splice(indexCategory, 1);
-    console.log("categories", categories);
     saveCategories(categories);
 };
 
@@ -31,6 +41,7 @@ const initCategories = () => {
         {
             id: generateId(),
             name: "Mobile",
+            depcription: "Depcription 1",
             product: [
                 {
                     id: generateId(),
@@ -45,6 +56,7 @@ const initCategories = () => {
         {
             id: generateId(),
             name: "Tablet",
+            depcription: "Depcription 2",
             product: [
                 {
                     id: generateId(),
@@ -67,5 +79,7 @@ export {
     createCategory,
     getCategories,
     generateId,
-    deleteCategory
+    deleteCategory,
+    getCategoryById,
+    updateCategoryById
 }

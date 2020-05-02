@@ -8,18 +8,18 @@
             <table class="table table-hover">
                 <thead>
                     <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Name</th>
                         <th scope="col">Id category</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Depcription</th>
                         <th scope="col">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="(category, index) in categories"
+                    <tr v-for="category in categories"
                         :key="category.id">
-                        <th scope="row">{{index + 1}}</th>
+                        <th scope="row">{{category.id}}</th>
                         <td>{{category.name}}</td>
-                        <td>{{category.id}}</td>
+                        <td>{{category.depcription}}</td>
                         <td>
                             <button class="btn btn-sm btn-warning"
                                 @click="navigateUpdateCategory(category.id)"
@@ -54,10 +54,10 @@ export default {
     name: 'Categories',
     methods: {
         navigateCreateCategory() {
-            this.$router.push('/category/new');
+            this.$router.push({ name: 'createAndUpdateCategory', params: { id: 'new' }});
         },
         navigateUpdateCategory(id) {
-            this.$router.push('/category/' + id);
+            this.$router.push({ name: 'createAndUpdateCategory', params: { id }});
         },
         deleteCategoryById(id) {
             deleteCategory(id);
