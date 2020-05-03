@@ -51,6 +51,7 @@ import {
     getCategoryById,
     updateCategoryById
 } from './../../service';
+import _ from 'lodash';
 
 export default {
     name: 'CategoryCreateAndUpdate',
@@ -92,7 +93,7 @@ export default {
     },
     mounted() {
         const id = this.$route.params.id;
-        if (id === 'new') {
+        if (_.isEqual(id, 'new')) {
             this.isCreateMode = true;
             return;
         }

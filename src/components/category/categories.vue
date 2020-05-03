@@ -51,6 +51,8 @@ import {
     deleteCategory
 } from './../../service';
 
+import _ from 'lodash';
+
 export default {
     name: 'Categories',
     methods: {
@@ -75,7 +77,7 @@ export default {
     },
     mounted() {
         const categories = getCategories();
-        if (categories && categories.length >= 3) {
+        if (!_.isEmpty(categories) && categories.length >= 3) {
             this.categories = getCategories();
             return;
         }

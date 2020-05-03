@@ -43,6 +43,7 @@ import {
     getProductById,
     updateProductById
 } from './../../service';
+import _ from 'lodash';
 
 export default {
     name: 'ProductCreateAndUpdate',
@@ -76,13 +77,13 @@ export default {
                 name: this.name
             };
             updateProductById(this.categoryId, data);
-            this.$router.push({ path: `/category/${this.categoryId}/view-products`});
+            this.$router.push({ path: `/category/${this.categoryId}/view-products` });
         }
     },
     mounted() {
         const productId = this.$route.params.productId;
         this.categoryId = this.$route.params.id;
-        if (productId === 'new') {
+        if (_.isEqual(productId, 'new')) {
             this.isCreateMode = true;
             return;
         }
