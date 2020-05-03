@@ -65,6 +65,13 @@ const createProduct = (categoryId, productCreate) => {
     saveCategories(categories);
 };
 
+const getProductById = (categoryId, productId) => {
+    const categories = getCategories();
+    const category = categories.filter(category => category.id === categoryId)[0];
+    const product = category.products.filter(product => product.id === productId)[0];
+    return product;
+};
+
 const initCategories = () => {
     const categories = [
         {
@@ -113,5 +120,6 @@ export {
     updateCategoryById,
     deleteProductById,
     updateProductById,
-    createProduct
+    createProduct,
+    getProductById
 }
