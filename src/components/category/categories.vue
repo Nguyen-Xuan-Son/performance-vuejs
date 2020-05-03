@@ -75,7 +75,7 @@ export default {
     },
     mounted() {
         const categories = getCategories();
-        if (categories.length >= 3) {
+        if (categories && categories.length >= 3) {
             this.categories = getCategories();
             return;
         }
