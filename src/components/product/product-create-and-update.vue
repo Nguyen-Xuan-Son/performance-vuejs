@@ -74,7 +74,7 @@ export default {
             const data = {
                 id: this.productId,
                 name: this.name
-            }
+            };
             updateProductById(this.categoryId, data);
             this.$router.push({ path: `/category/${this.categoryId}/view-products`});
         }

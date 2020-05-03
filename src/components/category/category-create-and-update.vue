@@ -53,7 +53,7 @@ import {
 } from './../../service';
 
 export default {
-    name: 'CategoryCreate',
+    name: 'CategoryCreateAndUpdate',
     data() {
         return {
             name: '',
