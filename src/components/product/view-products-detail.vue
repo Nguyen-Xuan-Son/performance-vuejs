@@ -18,6 +18,8 @@
                     <tr>
                         <th scope="col">Id product</th>
                         <th scope="col">Name</th>
+                        <th scope="col">Create time</th>
+                        <th scope="col">Update time</th>
                         <th scope="col">Actions</th>
                     </tr>
                 </thead>
@@ -26,6 +28,8 @@
                         :key="product.id">
                         <th scope="row">{{product.id}}</th>
                         <td>{{product.name}}</td>
+                        <td>{{formatTime(product.createTime)}}</td>
+                        <td>{{formatTime(product.updateTime)}}</td>
                         <td>
                             <button class="btn btn-sm btn-warning"
                                 @click="navigateUpdateProduct(product.id)"
@@ -50,6 +54,8 @@ import {
     getCategoryById,
     deleteProductById
 } from '../../service';
+import moment from 'moment';
+
 export default {
     name: 'CategoryUpdateAndDetail',
     data() {
@@ -73,6 +79,9 @@ export default {
         },
         navigateToCategories() {
             this.$router.push({ path: `/category`});
+        },
+        formatTime(time) {
+            return moment(time).format('MMMM Do YYYY, h:mm:ss a');
         }
     },
     mounted() {

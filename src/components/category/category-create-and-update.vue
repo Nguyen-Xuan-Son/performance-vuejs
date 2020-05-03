@@ -52,6 +52,7 @@ import {
     updateCategoryById
 } from './../../service';
 import _ from 'lodash';
+import moment from 'moment';
 
 export default {
     name: 'CategoryCreateAndUpdate',
@@ -60,7 +61,8 @@ export default {
             name: '',
             depcription: '',
             isCreateMode: true,
-            categoryId: ''
+            categoryId: '',
+            category: {}
         }
     },
     methods: {
@@ -77,15 +79,17 @@ export default {
             this.$router.push("/category");
         },
         getCategory() {
-            const category = getCategoryById(this.categoryId);
-            this.name = category.name;
-            this.depcription = category.depcription;
+            this.category = getCategoryById(this.categoryId);
+            this.name = this.category.name;
+            this.depcription = this.category.depcription;
         },
         updateCategory() {
             const data = {
                 id: this.categoryId,
                 name: this.name,
-                depcription: this.depcription
+                depcription: this.depcription,
+                createTime: this.category.createTime,
+                updateTime: moment.now()
             }
             updateCategoryById(data);
             this.$router.push("/category");

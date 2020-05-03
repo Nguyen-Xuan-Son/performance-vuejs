@@ -11,6 +11,8 @@
                         <th scope="col">Id category</th>
                         <th scope="col">Name</th>
                         <th scope="col">Depcription</th>
+                        <th scope="col">Create time</th>
+                        <th scope="col">Update time</th>
                         <th scope="col">Actions</th>
                     </tr>
                 </thead>
@@ -20,6 +22,8 @@
                         <th scope="row">{{category.id}}</th>
                         <td>{{category.name}}</td>
                         <td>{{category.depcription}}</td>
+                        <td>{{formatTime(category.createTime)}}</td>
+                        <td>{{formatTime(category.updateTime)}}</td>
                         <td>
                             <button class="btn btn-sm btn-warning"
                                 @click="navigateUpdateCategory(category.id)"
@@ -52,6 +56,7 @@ import {
 } from './../../service';
 
 import _ from 'lodash';
+import moment from 'moment';
 
 export default {
     name: 'Categories',
@@ -68,6 +73,9 @@ export default {
         },
         navigateViewCategoryDetail(id) {
             this.$router.push({ path: `/category/${id}/view-products`});
+        },
+        formatTime(time) {
+            return moment(time).format('MMMM Do YYYY, h:mm:ss a');
         }
     },
     data() {

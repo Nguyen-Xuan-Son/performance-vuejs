@@ -1,3 +1,5 @@
+import moment from 'moment';
+
 const generateId = () => {
     return Math.random().toString(36).substr(2, 11);
 };
@@ -73,19 +75,23 @@ const getProductById = (categoryId, productId) => {
 };
 
 const initCategories = () => {
-    const categories = [
-        {
+    const categories = [{
             id: generateId(),
             name: "Mobile",
             depcription: "Depcription 1",
-            products: [
-                {
+            createTime: moment.now(),
+            updateTime: moment.now(),
+            products: [{
                     id: generateId(),
-                    name: "Iphone 1"
+                    name: "Iphone 1",
+                    createTime: moment.now(),
+                    updateTime: moment.now()
                 },
                 {
                     id: generateId(),
-                    name: "Iphone 3"
+                    name: "Iphone 3",
+                    createTime: moment.now(),
+                    updateTime: moment.now()
                 }
             ]
         },
@@ -93,14 +99,19 @@ const initCategories = () => {
             id: generateId(),
             name: "Tablet",
             depcription: "Depcription 2",
-            products: [
-                {
+            createTime: moment.now(),
+            updateTime: moment.now(),
+            products: [{
                     id: generateId(),
-                    name: "Tablet 1"
+                    name: "Tablet 1",
+                    createTime: moment.now(),
+                    updateTime: moment.now()
                 },
                 {
                     id: generateId(),
-                    name: "Tablet 3"
+                    name: "Tablet 3",
+                    createTime: moment.now(),
+                    updateTime: moment.now()
                 }
             ]
         }

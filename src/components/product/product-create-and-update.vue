@@ -44,6 +44,7 @@ import {
     updateProductById
 } from './../../service';
 import _ from 'lodash';
+import moment from 'moment';
 
 export default {
     name: 'ProductCreateAndUpdate',
@@ -52,7 +53,8 @@ export default {
             name: '',
             isCreateMode: true,
             categoryId: '',
-            productId: ''
+            productId: '',
+            product: {}
         }
     },
     methods: {
@@ -68,13 +70,15 @@ export default {
             this.$router.push({ path: `/category/${this.categoryId}/view-products`});
         },
         getProduct() {
-            const product = getProductById(this.categoryId, this.productId);
-            this.name = product.name;
+            this.product = getProductById(this.categoryId, this.productId);
+            this.name = this.product.name;
         },
         updateProduct() {
             const data = {
                 id: this.productId,
-                name: this.name
+                name: this.name,
+                createTime: this.product.createTime,
+                updateTime: moment.now()
             };
             updateProductById(this.categoryId, data);
             this.$router.push({ path: `/category/${this.categoryId}/view-products` });
