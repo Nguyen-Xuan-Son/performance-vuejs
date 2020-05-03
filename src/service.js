@@ -36,6 +36,35 @@ const deleteCategory = id => {
     saveCategories(categories);
 };
 
+const deleteProductById = (categoryId, productId) => {
+    const categories = getCategories();
+    const category = categories.filter(category => category.id === categoryId)[0];
+    const indexProduct = category.products.findIndex(product => product.id === productId);
+    const indexCategory = categories.findIndex(category => category.id === categoryId);
+    category.products.splice(indexProduct, 1);
+    categories.splice(indexCategory, 1, category);
+    saveCategories(categories);
+};
+
+const updateProductById = (categoryId, productUpdate) => {
+    const categories = getCategories();
+    const category = categories.filter(category => category.id === categoryId)[0];
+    const indexProduct = category.products.findIndex(product => product.id === productUpdate.id);
+    const indexCategory = categories.findIndex(category => category.id === categoryId);
+    category.products.splice(indexProduct, 1, productUpdate);
+    categories.splice(indexCategory, 1, category);
+    saveCategories(categories);
+};
+
+const createProduct = (categoryId, productCreate) => {
+    const categories = getCategories();
+    const category = categories.filter(category => category.id === categoryId)[0];
+    const indexCategory = categories.filter(category => category.id === categoryId);
+    category.products.push(productCreate);
+    categories.splice(indexCategory, 1, category);
+    saveCategories(categories);
+};
+
 const initCategories = () => {
     const categories = [
         {
@@ -81,5 +110,8 @@ export {
     generateId,
     deleteCategory,
     getCategoryById,
-    updateCategoryById
+    updateCategoryById,
+    deleteProductById,
+    updateProductById,
+    createProduct
 }

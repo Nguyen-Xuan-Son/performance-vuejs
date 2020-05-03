@@ -1,16 +1,16 @@
-import ProductCreateComponent from './product-create.vue';
-import ProductUpdateAndViewComponent from './product-update-and-detail.vue';
+import ProductCreateAndUpdateComponent from './product-create-and-update.vue';
+import ViewProductsComponent from './view-products-detail.vue';
 
 const routes = [
     {
-        path: 'new',
-        name: 'createProduct',
-        component: ProductCreateComponent
+        path: '',
+        name: 'products',
+        component: ViewProductsComponent
     },
     {
-        path: ':id',
+        path: ':productId',
         name: 'updateAndViewProduct',
-        component: ProductUpdateAndViewComponent
+        component: ProductCreateAndUpdateComponent
     }
 ];
 

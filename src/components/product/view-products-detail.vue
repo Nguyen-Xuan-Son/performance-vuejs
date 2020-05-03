@@ -28,12 +28,12 @@
                         <td>{{product.name}}</td>
                         <td>
                             <button class="btn btn-sm btn-warning"
-                                @click="navigateUpdateProduct(category.id)"
+                                @click="navigateUpdateProduct(product.id)"
                             >
                                 Edit
                             </button>
                             <button class="btn btn-sm btn-danger ml-1"
-                                @click="deleteProductById(category.id)"
+                                @click="deleteProduct(product.id)"
                             >
                                 Delete
                             </button>
@@ -46,7 +46,10 @@
 </template>
 
 <script>
-import { getCategoryById } from '../../service';
+import { 
+    getCategoryById,
+    deleteProductById
+} from '../../service';
 export default {
     name: 'CategoryUpdateAndDetail',
     data() {
@@ -56,24 +59,25 @@ export default {
     },
     methods: {
         navigateCreateProduct() {
-            console.log("navigateCreateProduct");
+            this.$router.push({ path: `/category/${this.categoryId}/view-products/new`});
         },
-        deleteProductById() {
-            console.log("deleteProductById");
+        deleteProduct(id) {
+            deleteProductById(this.categoryId, id);
+            this.getCategory();
         },
-        navigateUpdateProduct() {
-            console.log("navigateUpdateProduct");
+        navigateUpdateProduct(productId) {
+            this.$router.push({ path: `/category/${this.categoryId}/view-products/${productId}`});
         },
-        getCategory(id) {
-            this.categoryDetail = getCategoryById(id);
+        getCategory() {
+            this.categoryDetail = getCategoryById(this.categoryId);
         },
         navigateToCategories() {
             this.$router.push({ path: `/category`});
         }
     },
     mounted() {
-        const categoryId = this.$route.params.id;
-        this.getCategory(categoryId);
+        this.categoryId = this.$route.params.id;
+        this.getCategory();
     }
 }
 </script>

@@ -1,6 +1,7 @@
 import CategoryCreateAndUpdateComponent from './category-create-and-update';
-import ViewProductsComponent from './view-products-detail.vue';
 import CategoriesComponent from './categories.vue';
+import ProductComponent from './../product';
+import ProductRoute from './../product/router';
 
 const routes = [
     {
@@ -16,7 +17,8 @@ const routes = [
     {
         path: ':id/view-products',
         name: 'viewProducts',
-        component: ViewProductsComponent
+        component: ProductComponent,
+        children: ProductRoute
     }
 ];
 
