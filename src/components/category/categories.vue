@@ -1,5 +1,6 @@
 <template>
     <div class="row">
+        <ComponentC />
         <div class="col-md-12 text-right">
             <button class="btn btn-sm btn-success m-2"
                     @click="navigateCreateCategory()">Create</button>
@@ -58,8 +59,11 @@ import {
 import _ from 'lodash';
 import moment from 'moment';
 
+const ComponentC = () => import(/* webpackChunkName: "component-C" */ './component-C');
+
 export default {
     name: 'Categories',
+    components: {ComponentC},
     methods: {
         navigateCreateCategory() {
             this.$router.push({ name: 'createAndUpdateCategory', params: { id: 'new' }});

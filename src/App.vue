@@ -6,13 +6,30 @@
         <div class="container">
             <router-view />
         </div>
+        <div class="container">
+            <ComponentA v-if="isShow" />
+            <ComponentB />
+        </div>
     </div>
 </template>
 
 <script>
+const ComponentA = () => import(/* webpackChunkName: "component-A" */ './component-A');
+const ComponentB = () => import(/* webpackChunkName: "component-B" */ './component-B');
 
 export default {
     name: 'App',
+    data() {
+        return {
+            isShow: false
+        }
+    },
+    components: {ComponentA, ComponentB},
+    mounted() {
+        setTimeout(() => {
+            this.isShow = true;
+        }, 2000);
+    }
 }
 </script>
 
