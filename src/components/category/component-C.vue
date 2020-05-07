@@ -1,13 +1,13 @@
 <template>
     <div class="row">
-        ComponentA
+        ComponentC
     </div>
 </template>
 
 <script>
 
 export default {
-    name: 'ComponentA',
+    name: 'ComponentC',
 }
 </script>
 
