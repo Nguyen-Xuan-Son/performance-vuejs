@@ -1,18 +1,16 @@
-import CategoryContainerComponent from './components/category';
-import HomeComponent from './components/home.vue';
-
 import CategoryRoute from './components/category/router';
 
-const routes = [
-    {
+const routes = [{
         path: '/',
         name: 'home',
-        component: HomeComponent
+        component: () =>
+            import ('./components/home.vue')
     },
     {
         path: '/category',
         name: 'category',
-        component: CategoryContainerComponent,
+        component: () =>
+            import ('./components/category'),
         children: CategoryRoute
     }
 ];

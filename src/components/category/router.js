@@ -1,23 +1,22 @@
-import CategoryCreateAndUpdateComponent from './category-create-and-update';
-import CategoriesComponent from './categories.vue';
-import ProductComponent from './../product';
 import ProductRoute from './../product/router';
 
-const routes = [
-    {
+const routes = [{
         path: '',
         name: 'categories',
-        component: CategoriesComponent
+        component: () =>
+            import ('./categories.vue')
     },
     {
         path: ':id',
         name: 'createAndUpdateCategory',
-        component: CategoryCreateAndUpdateComponent
+        component: () =>
+            import ('./category-create-and-update.vue')
     },
     {
         path: ':id/view-products',
         name: 'viewProducts',
-        component: ProductComponent,
+        component: () =>
+            import ('./../product'),
         children: ProductRoute
     }
 ];
