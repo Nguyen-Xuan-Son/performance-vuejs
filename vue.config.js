@@ -1,7 +1,6 @@
-// vue.config.js
 module.exports = {
     chainWebpack: config => {
-        // remove the prefetch plugin
         config.plugins.delete('prefetch')
+        config.plugins.delete('preload')
     }
 }
