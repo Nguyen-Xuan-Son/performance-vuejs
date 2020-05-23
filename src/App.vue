@@ -3,6 +3,7 @@
         <router-link to="/">
             <img alt="Vue logo" src="./assets/logo.png">
         </router-link>
+        <Window v-if="isShow" />
         <div class="container">
             <router-view />
         </div>
@@ -13,6 +14,16 @@
 
 export default {
     name: 'App',
+    data() {
+        return {
+            isShow: false
+        }
+    },
+    components: {
+        Window: () => import(
+            /* webpackChunkName: "my-Window" */
+            './window.vue')
+    },
 }
 </script>
 
