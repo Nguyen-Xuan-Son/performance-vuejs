@@ -44,7 +44,7 @@ import {
     updateProductById
 } from './../../service';
 import isEqual from 'lodash/isEqual';
-import moment from 'moment';
+import moment from 'moment/moment';
 
 export default {
     name: 'ProductCreateAndUpdate',

@@ -56,7 +56,7 @@ import {
 } from './../../service';
 
 import isEmpty from 'lodash/isEmpty';
-import moment from 'moment';
+import moment from 'moment/moment';
 
 export default {
     name: 'Categories',

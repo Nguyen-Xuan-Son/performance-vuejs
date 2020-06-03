@@ -1,4 +1,4 @@
-import moment from 'moment';
+import moment from 'moment/moment';
 
 const generateId = () => {
     return Math.random().toString(36).substr(2, 11);
