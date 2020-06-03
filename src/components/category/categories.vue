@@ -55,7 +55,7 @@ import {
     deleteCategory
 } from './../../service';
 
-import _ from 'lodash';
+import isEmpty from 'lodash/isEmpty';
 import moment from 'moment';
 
 export default {
@@ -85,7 +85,7 @@ export default {
     },
     mounted() {
         const categories = getCategories();
-        if (!_.isEmpty(categories) && categories.length >= 3) {
+        if (!isEmpty(categories) && categories.length >= 3) {
             this.categories = getCategories();
             return;
         }

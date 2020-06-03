@@ -51,7 +51,7 @@ import {
     getCategoryById,
     updateCategoryById
 } from './../../service';
-import _ from 'lodash';
+import isEqual from 'lodash/isEqual';
 import moment from 'moment';
 
 export default {
@@ -97,7 +97,7 @@ export default {
     },
     mounted() {
         const id = this.$route.params.id;
-        if (_.isEqual(id, 'new')) {
+        if (isEqual(id, 'new')) {
             this.isCreateMode = true;
             return;
         }
